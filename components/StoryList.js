@@ -21,7 +21,5 @@ export const StoryList = () => {
 const styles = StyleSheet.create({
   container: {
     height: 120,
-    borderBottomWidth: 1,
-    borderColor: "#e6e6e6",
   },
 });

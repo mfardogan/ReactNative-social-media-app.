@@ -1,7 +1,9 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Image, View } from "react-native";
+import { Colours } from "../constants/Colours";
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
+import { ViewStory } from "../screens/ViewStory";
 import { Links, Logo } from "./Logo";
 
 export const Navigator = () => {
@@ -15,9 +17,11 @@ export const Navigator = () => {
           title: "Gonna app.",
           headerStyle: {
             height: 100,
+            backgroundColor: Colours.bg,
           },
           headerTitleStyle: {
             fontSize: 25,
+            color: Colours.links,
           },
           headerShadowVisible: false,
           animationEnabled: false,
@@ -44,6 +48,8 @@ export const Navigator = () => {
           ),
         })}
       />
+
+      <Stack.Screen name="viewStory" component={ViewStory} options={{}} />
     </Stack.Navigator>
   );
 };
@@ -60,16 +66,15 @@ export const Avatar = (props) => {
       <View
         style={{
           margin: 5,
-          width: 75,
-          height: 75,
+          width: 60,
+          height: 60,
           borderRadius: 40,
           backgroundColor: "transparent",
-          borderWidth: 3,
-          borderColor: "#6600ff",
+          borderColor: Colours.links,
         }}
       >
         <Image
-          style={{ width: 70, height: 70, borderRadius: 40 }}
+          style={{ width: 60, height: 60, borderRadius: 40 }}
           source={{ uri: props.avatar }}
         />
       </View>

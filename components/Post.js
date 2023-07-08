@@ -1,6 +1,7 @@
 import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
+import { Colours } from "../constants/Colours";
 
 import {
   Image,
@@ -34,7 +35,7 @@ export const Post = ({ content }) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menu}>
-          <Entypo name="dots-three-horizontal" size={20} color="black" />
+          <Entypo name="dots-three-horizontal" size={25} color="black" />
         </TouchableOpacity>
       </View>
 
@@ -58,11 +59,13 @@ export const Post = ({ content }) => {
             <AntDesign
               name={liked ? "heart" : "hearto"}
               size={30}
-              color={liked ? "red" : "black"}
+              color={liked ? "red" : Colours.links}
             />
           </TouchableOpacity>
 
-          <Text style={{ fontWeight: "bold", marginLeft: 5 }}>
+          <Text
+            style={{ fontWeight: "bold", marginLeft: 5, color: Colours.links }}
+          >
             {content.likeCount} likes.
           </Text>
         </View>
@@ -74,8 +77,10 @@ export const Post = ({ content }) => {
             alignItems: "center",
           }}
         >
-          <FontAwesome name="comment-o" size={30} color="black" />
-          <Text style={{ fontWeight: "bold", marginLeft: 5 }}>
+          <FontAwesome name="comment-o" size={30} color={Colours.links} />
+          <Text
+            style={{ fontWeight: "bold", marginLeft: 5, color: Colours.links }}
+          >
             {content.commentCount} comments.
           </Text>
         </View>
@@ -89,7 +94,7 @@ export const Post = ({ content }) => {
             right: 5,
           }}
         >
-          <Entypo name="layers" size={30} color="black" />
+          <Entypo name="layers" size={30} color={Colours.links} />
         </View>
       </View>
     </View>
@@ -111,13 +116,14 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: "bold",
     fontSize: 17,
+    color: Colours.links,
   },
   avatar: {
     width: 50,
     height: 50,
     marginRight: 10,
-    borderWidth: 3,
-    borderColor: "#d9d9d9",
+    borderWidth: 2,
+    borderColor: Colours.links,
     borderRadius: 25,
   },
 
@@ -125,7 +131,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 5,
-    backgroundColor: "#e6e6e6",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",

@@ -1,9 +1,21 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useDispatch } from "react-redux";
+import { Colours } from "../constants/Colours";
+import { setSeen } from "../stores/slices";
 
 export const Story = ({ content }) => {
+  const dispatch = useDispatch();
+  const navigator = useNavigation();
+
   return (
-    <TouchableOpacity onPress={() => alert("Pressed...")}>
+    <TouchableOpacity
+      onPress={() => {
+        dispatch(setSeen(content.id));
+        navigator.navigate("viewStory", { content: content });
+      }}
+    >
       <View style={styles.container}>
         <View
           style={[
@@ -28,19 +40,19 @@ const styles = StyleSheet.create({
   },
 
   seen: {
-    borderColor: "#39964d",
+    borderColor: "green",
     borderWidth: 2,
   },
   notSeen: {
     borderStyle: "dashed",
-    borderColor: "#ba5b88",
+    borderColor: Colours.app,
     borderWidth: 3,
   },
 
   text: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "black",
+    color: Colours.links,
   },
   imageContainer: {
     width: 90,

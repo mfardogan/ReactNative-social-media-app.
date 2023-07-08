@@ -9,6 +9,7 @@ const slice = createSlice({
       .map((v) => ({
         id: faker.string.uuid(),
         user: faker.person.firstName(),
+        image: faker.image.urlPicsumPhotos(),
         avatar: faker.image.avatarLegacy(),
         seen: faker.datatype.boolean(),
       })),
@@ -52,7 +53,8 @@ const slice = createSlice({
   reducers: {
     setSeen(state, action) {
       const id = action.payload;
-      const story = state.find((e) => e.id === id);
+      const story = state.stories.find((e) => e.id === id);
+
       if (story) {
         story.seen = true;
       }

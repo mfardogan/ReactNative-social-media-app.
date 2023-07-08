@@ -1,5 +1,7 @@
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { Image, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Colours } from "../constants/Colours";
 
 export const Logo = () => {
   return (
@@ -14,27 +16,18 @@ export const Logo = () => {
 
 export const Links = () => {
   return (
-    <View
-      style={{
-        margin: 5,
-        flexDirection: "row",
-        width: 75,
-        height: 50,
-        alignItems: "center",
-      }}
-    >
-      <Ionicons
-        style={{ margin: 5 }}
-        name="notifications"
-        size={27}
-        color="black"
-      />
-      <FontAwesome
-        style={{ margin: 5 }}
-        name="envelope"
-        size={27}
-        color="black"
-      />
-    </View>
+    <TouchableOpacity>
+      <View
+        style={{
+          margin: 5,
+          flexDirection: "row",
+          width: 45,
+          height: 45,
+          alignItems: "center",
+        }}
+      >
+        <MaterialIcons name="person" size={35} color={Colours.links} />
+      </View>
+    </TouchableOpacity>
   );
 };

@@ -1,9 +1,14 @@
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import {
+  AntDesign,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StoryList } from "../components/StoryList";
+import { Colours } from "../constants/Colours";
 import { Avatar } from "../navigators/Navigator";
 
 export const Profile = () => {
@@ -23,8 +28,9 @@ export const Profile = () => {
     return {
       title: userName,
       headerTitleAlign: "center",
-      headerTitleStyle: { fontSize: 25 },
-      headerStyle: { height: 120 },
+      headerTintColor: Colours.links,
+      headerTitleStyle: { fontSize: 25, color: Colours.links },
+      headerStyle: { height: 120, backgroundColor: Colours.bg },
       headerShadowVisible: false,
       animationEnabled: false,
       headerRight: () => <Avatar avatar={avatar} />,
@@ -46,7 +52,7 @@ export const Profile = () => {
             style={{
               flexDirection: "row",
               margin: 3,
-              backgroundColor: follow ? "#ff4d94" : "#3366ff",
+              backgroundColor: follow ? "#ff4d94" : Colours.app,
               width: 170,
               height: 45,
               justifyContent: "center",
@@ -71,11 +77,11 @@ export const Profile = () => {
             style={[
               style.segment,
               {
-                backgroundColor: "#00e6b8",
+                backgroundColor: Colours.appSecondary,
               },
             ]}
           >
-            <FontAwesome name="envelope-open" size={25} color="white" />
+            <MaterialCommunityIcons name="send" size={25} color="white" />
           </View>
         </TouchableOpacity>
 
@@ -118,7 +124,7 @@ const Segment = ({ header, value }) => {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: Colours.bg,
     alignItems: "center",
     padding: 10,
   },
