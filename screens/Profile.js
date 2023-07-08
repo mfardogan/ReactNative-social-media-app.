@@ -1,13 +1,13 @@
 import {
   AntDesign,
-  FontAwesome,
   MaterialCommunityIcons,
+  Octicons,
 } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { StoryList } from "../components/StoryList";
+import { HiglightList } from "../components/HighlightList";
 import { Colours } from "../constants/Colours";
 import { Avatar } from "../navigators/Navigator";
 
@@ -15,7 +15,7 @@ export const Profile = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const [follow, setFollow] = React.useState(false);
-  const { content } = route.params;
+  const { content, owner } = route.params;
 
   React.useEffect(() => {
     const setUp = async () => {
@@ -33,64 +33,74 @@ export const Profile = () => {
       headerStyle: { height: 120, backgroundColor: Colours.bg },
       headerShadowVisible: false,
       animationEnabled: false,
-      headerRight: () => <Avatar avatar={avatar} />,
+      headerRight: () => <Avatar avatar={avatar} edit={owner} />,
     };
   };
 
   return (
     <View style={style.container}>
-      <StoryList />
-      <Text style={{ marginTop: 20, fontWeight: "bold", fontSize: 35 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Octicons name="location" size={25} color={Colours.links} />
+        <Text style={{ margin: 5, fontSize: 17, color: "#b3b3b3" }}>
+          {content.country}
+        </Text>
+      </View>
+      <Text style={{ margin: 5, fontWeight: "bold", fontSize: 35 }}>
         {content.name} {content.surname}
       </Text>
 
-      <Text style={{ fontSize: 20, color: "gray" }}>{content.email}</Text>
-
       <View style={{ flexDirection: "row", marginTop: 10 }}>
-        <TouchableOpacity onPress={() => setFollow((prev) => !prev)}>
-          <View
-            style={{
-              flexDirection: "row",
-              margin: 3,
-              backgroundColor: follow ? "#ff4d94" : Colours.app,
-              width: 170,
-              height: 45,
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 30,
-            }}
-          >
-            <AntDesign
-              style={{ margin: 5 }}
-              name="plus"
-              size={25}
-              color="white"
-            />
-            <Text style={{ color: "white", fontWeight: "bold" }}>
-              {follow ? "Cancel Request" : "Make friend"}
-            </Text>
-          </View>
-        </TouchableOpacity>
+        {!owner && (
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity onPress={() => setFollow((prev) => !prev)}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  margin: 3,
+                  backgroundColor: follow ? "#ff4d94" : Colours.app,
+                  width: 175,
+                  height: 45,
+                  paddingLeft: 10,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 30,
+                }}
+              >
+                <AntDesign
+                  style={{ marginRight: 5 }}
+                  name="plus"
+                  size={25}
+                  color="white"
+                />
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  {follow ? "Cancel Request" : "Follow"}
+                </Text>
+              </View>
+            </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}}>
-          <View
-            style={[
-              style.segment,
-              {
-                backgroundColor: Colours.appSecondary,
-              },
-            ]}
-          >
-            <MaterialCommunityIcons name="send" size={25} color="white" />
+            <TouchableOpacity onPress={() => {}}>
+              <View
+                style={[
+                  style.segment,
+                  {
+                    backgroundColor: Colours.appSecondary,
+                  },
+                ]}
+              >
+                <MaterialCommunityIcons name="send" size={25} color="white" />
+              </View>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => {}}>
-          <View style={[style.segment, { backgroundColor: "#262626" }]}>
-            <FontAwesome name="gear" size={30} color="white" />
-          </View>
-        </TouchableOpacity>
+        )}
       </View>
+
+      <HiglightList higlights={content.stories} />
 
       <View style={{ flexDirection: "row", marginBottom: 10, marginTop: 10 }}>
         <Segment header={content.follewed} value={"Takip"} />
@@ -100,11 +110,11 @@ export const Profile = () => {
 
       <FlatList
         data={content.images}
-        numColumns={2}
+        numColumns={3}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Image
-            style={{ width: 190, height: 190, margin: 0, borderRadius: 1 }}
+            style={{ width: 130, height: 130, margin: 0, borderRadius: 0 }}
             source={{ uri: item.image }}
           />
         )}
@@ -126,7 +136,7 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: Colours.bg,
     alignItems: "center",
-    padding: 10,
+    padding: 5,
   },
 
   segment: {

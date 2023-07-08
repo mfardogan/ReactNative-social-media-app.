@@ -1,6 +1,8 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { Image, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useSelector } from "react-redux";
 import { Colours } from "../constants/Colours";
 
 export const Logo = () => {
@@ -15,8 +17,15 @@ export const Logo = () => {
 };
 
 export const Links = () => {
+  const navigator = useNavigation();
+  const user = useSelector((state) => state.app.activeUser);
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        navigator.navigate("profile", { content: user, owner: true });
+      }}
+    >
       <View
         style={{
           margin: 5,

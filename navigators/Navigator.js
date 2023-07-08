@@ -1,6 +1,10 @@
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Image, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { Colours } from "../constants/Colours";
+import { EditProfile } from "../screens/EditProfile";
 import { Home } from "../screens/Home";
 import { Profile } from "../screens/Profile";
 import { ViewStory } from "../screens/ViewStory";
@@ -49,12 +53,23 @@ export const Navigator = () => {
         })}
       />
 
-      <Stack.Screen name="viewStory" component={ViewStory} options={{}} />
+      <Stack.Screen
+        name="editProfile"
+        component={EditProfile}
+        options={{
+          title: "Edit profile.",
+          headerShadowVisible: false,
+          animationEnabled: false,
+        }}
+      />
+      <Stack.Screen name="viewStory" component={ViewStory} />
     </Stack.Navigator>
   );
 };
 
 export const Avatar = (props) => {
+  const navigator = useNavigation();
+
   return (
     <View
       style={{
@@ -78,6 +93,29 @@ export const Avatar = (props) => {
           source={{ uri: props.avatar }}
         />
       </View>
+      {props.edit && (
+        <View
+          style={{
+            position: "absolute",
+            width: 25,
+            height: 25,
+            borderRadius: 15,
+            backgroundColor: Colours.app,
+            bottom: -1,
+            left: -2,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              navigator.navigate("editProfile");
+            }}
+          >
+            <Entypo name="pencil" size={15} color="white" />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

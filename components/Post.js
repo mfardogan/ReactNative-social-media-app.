@@ -29,9 +29,12 @@ export const Post = ({ content }) => {
           }}
         >
           <Image style={styles.avatar} source={{ uri: content.avatar }} />
-          <Text style={styles.name}>
-            {content.name} {content.surname}
-          </Text>
+          <View>
+            <Text style={styles.name}>
+              {content.name} {content.surname}
+            </Text>
+            <Text style={styles.loc}>{content.location}</Text>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menu}>
@@ -118,6 +121,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: Colours.links,
   },
+  loc: { fontSize: 15, color: "gray", marginLeft: 2 },
+
   avatar: {
     width: 50,
     height: 50,
@@ -138,16 +143,16 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    flex: 6,
+    flex: 9,
     width: "100%",
     height: 500,
-    borderRadius: 1,
+    borderRadius: 15,
   },
   bg: {
     width: "100%",
     height: "100%",
   },
   bgImage: {
-    borderRadius: 1,
+    borderRadius: 15,
   },
 });
