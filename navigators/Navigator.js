@@ -18,13 +18,13 @@ export const Navigator = () => {
         name="home"
         component={Home}
         options={{
-          title: "Gonna app.",
+          title: "Social app.",
           headerStyle: {
             height: 100,
             backgroundColor: Colours.bg,
           },
           headerTitleStyle: {
-            fontSize: 25,
+            fontSize: 30,
             color: Colours.links,
           },
           headerShadowVisible: false,

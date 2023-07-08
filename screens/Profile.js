@@ -4,7 +4,7 @@ import {
   Octicons,
 } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { HiglightList } from "../components/HighlightList";
@@ -16,6 +16,7 @@ export const Profile = () => {
   const navigation = useNavigation();
   const [follow, setFollow] = React.useState(false);
   const { content, owner } = route.params;
+  const [three, setThree] = useState(true);
 
   React.useEffect(() => {
     const setUp = async () => {
@@ -64,9 +65,8 @@ export const Profile = () => {
                   flexDirection: "row",
                   margin: 3,
                   backgroundColor: follow ? "#ff4d94" : Colours.app,
-                  width: 175,
+                  width: 125,
                   height: 45,
-                  paddingLeft: 10,
                   alignItems: "center",
                   justifyContent: "center",
                   borderRadius: 30,
@@ -79,7 +79,7 @@ export const Profile = () => {
                   color="white"
                 />
                 <Text style={{ color: "white", fontWeight: "bold" }}>
-                  {follow ? "Cancel Request" : "Follow"}
+                  {follow ? "Cancel" : "Follow"}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -102,35 +102,80 @@ export const Profile = () => {
 
       <HiglightList higlights={content.stories} />
 
-      <View style={{ flexDirection: "row", marginBottom: 10, marginTop: 10 }}>
-        <Segment header={content.follewed} value={"Takip"} />
-        <Segment header={content.followers} value={"Takipçi"} />
-        <Segment border={false} header={content.posts} value={"Gönderi"} />
+      <View
+        style={{
+          height: 50,
+          width: "80%",
+          margin: 5,
+          padding: 5,
+          paddingLeft: 20,
+          paddingRight: 20,
+          flexDirection: "row",
+        }}
+      >
+        <View
+          style={[
+            {
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1,
+              borderColor: "#8c8c8c",
+            },
+            { borderBottomWidth: three ? 3 : 0 },
+          ]}
+        >
+          <TouchableOpacity onPress={() => setThree(true)}>
+            <MaterialCommunityIcons name="grid" size={30} color="#404040" />
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={[
+            {
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1,
+              borderColor: "#8c8c8c",
+            },
+            { borderBottomWidth: !three ? 3 : 0 },
+          ]}
+        >
+          <TouchableOpacity onPress={() => setThree(false)}>
+            <MaterialCommunityIcons name="grid-off" size={30} color="#404040" />
+          </TouchableOpacity>
+        </View>
       </View>
+      {three && (
+        <FlatList
+          data={content.images}
+          numColumns={3}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Image
+              style={{ width: 130, height: 130, margin: 0, borderRadius: 0 }}
+              source={{ uri: item.image }}
+            />
+          )}
+        />
+      )}
 
-      <FlatList
-        data={content.images}
-        numColumns={3}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Image
-            style={{ width: 130, height: 130, margin: 0, borderRadius: 0 }}
-            source={{ uri: item.image }}
-          />
-        )}
-      />
+      {!three && (
+        <FlatList
+          data={content.images}
+          numColumns={2}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Image
+              style={{ width: 190, height: 190, margin: 0, borderRadius: 0 }}
+              source={{ uri: item.image }}
+            />
+          )}
+        />
+      )}
     </View>
   );
 };
 
-const Segment = ({ header, value }) => {
-  return (
-    <View style={style.segmentContainer}>
-      <Text style={{ fontWeight: "bold", fontSize: 25 }}>{header}</Text>
-      <Text style={{ color: "gray", fontSize: 16 }}>{value}</Text>
-    </View>
-  );
-};
 const style = StyleSheet.create({
   container: {
     flex: 1,

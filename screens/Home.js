@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -24,7 +24,7 @@ export const Home = () => {
       >
         <View style={styles.action}>
           <TouchableOpacity>
-            <MaterialCommunityIcons name="plus" size={40} color="white" />
+            <MaterialIcons name="photo" size={35} color="white" />
           </TouchableOpacity>
         </View>
       </View>
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 50,
     height: 50,
+    opacity: 1,
     borderRadius: 25,
     backgroundColor: Colours.app,
     justifyContent: "center",

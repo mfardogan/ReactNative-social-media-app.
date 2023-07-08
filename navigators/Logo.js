@@ -1,9 +1,7 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Image, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
-import { Colours } from "../constants/Colours";
 
 export const Logo = () => {
   return (
@@ -30,12 +28,18 @@ export const Links = () => {
         style={{
           margin: 5,
           flexDirection: "row",
-          width: 45,
-          height: 45,
+          width: 48,
+          height: 48,
+          borderRadius: 30,
+          justifyContent: "center",
+          alignItems: "center",
           alignItems: "center",
         }}
       >
-        <MaterialIcons name="person" size={35} color={Colours.links} />
+        <Image
+          style={{ width: 45, height: 45, borderRadius: 30 }}
+          source={{ uri: user.avatar }}
+        />
       </View>
     </TouchableOpacity>
   );

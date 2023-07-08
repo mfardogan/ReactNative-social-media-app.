@@ -1,7 +1,6 @@
-import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
+import { Entypo, Feather, Ionicons, Octicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Colours } from "../constants/Colours";
 
 import {
   Image,
@@ -12,6 +11,7 @@ import {
   View,
 } from "react-native";
 import { useSelector } from "react-redux";
+import { Colours } from "../constants/Colours";
 
 export const Post = ({ content }) => {
   const [liked, setLiked] = useState(false);
@@ -33,7 +33,15 @@ export const Post = ({ content }) => {
             <Text style={styles.name}>
               {content.name} {content.surname}
             </Text>
-            <Text style={styles.loc}>{content.location}</Text>
+            <View style={{ flexDirection: "row" }}>
+              <Octicons
+                style={{ marginRight: 5 }}
+                name="location"
+                size={15}
+                color="gray"
+              />
+              <Text style={styles.loc}>{content.location}</Text>
+            </View>
           </View>
         </TouchableOpacity>
 
@@ -59,17 +67,18 @@ export const Post = ({ content }) => {
           }}
         >
           <TouchableOpacity onPress={() => setLiked((prev) => !prev)}>
-            <AntDesign
-              name={liked ? "heart" : "hearto"}
+            <Ionicons
+              name={liked ? "ios-heart" : "ios-heart-outline"}
               size={30}
               color={liked ? "red" : Colours.links}
             />
           </TouchableOpacity>
 
-          <Text
-            style={{ fontWeight: "bold", marginLeft: 5, color: Colours.links }}
-          >
-            {content.likeCount} likes.
+          <Text style={{ marginLeft: 5, color: "gray" }}>
+            <Text style={{ fontWeight: "bold", color: Colours.links }}>
+              {content.likeCount}
+            </Text>{" "}
+            likes.
           </Text>
         </View>
 
@@ -80,24 +89,13 @@ export const Post = ({ content }) => {
             alignItems: "center",
           }}
         >
-          <FontAwesome name="comment-o" size={30} color={Colours.links} />
-          <Text
-            style={{ fontWeight: "bold", marginLeft: 5, color: Colours.links }}
-          >
-            {content.commentCount} comments.
+          <Feather name="message-circle" size={30} color={Colours.links} />
+          <Text style={{ marginLeft: 5, color: "gray" }}>
+            <Text style={{ fontWeight: "bold", color: Colours.links }}>
+              {content.commentCount}
+            </Text>{" "}
+            comments.
           </Text>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            marginLeft: 10,
-            alignItems: "center",
-            position: "absolute",
-            right: 5,
-          }}
-        >
-          <Entypo name="layers" size={30} color={Colours.links} />
         </View>
       </View>
     </View>
@@ -107,7 +105,7 @@ export const Post = ({ content }) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 650,
+    height: 570,
   },
 
   segment: {
@@ -128,7 +126,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginRight: 10,
     borderWidth: 2,
-    borderColor: Colours.links,
+    borderColor: Colours.app,
     borderRadius: 25,
   },
 
@@ -146,13 +144,13 @@ const styles = StyleSheet.create({
     flex: 9,
     width: "100%",
     height: 500,
-    borderRadius: 15,
+    borderRadius: 5,
   },
   bg: {
     width: "100%",
     height: "100%",
   },
   bgImage: {
-    borderRadius: 15,
+    borderRadius: 5,
   },
 });
