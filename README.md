@@ -1,10 +1,9 @@
 # ReactNative-social-media-app.
 Social media app with React, React Native &amp; Redux 
+![Screenshot_20230709_023359_Gonna](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/b0816957-0e8c-49d3-9284-0480d4772bdb)
 
-![Screenshot_20230708_104251_Expo Go](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/6cc6f59b-0c2e-45ab-8fef-7d5eaaadb5b7)
+![Screenshot_20230709_023434_Gonna](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/eac3d2f4-e275-43f6-8701-2dd8174142cd)
 
-![2](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/663e7b04-ced2-424d-ae3a-37474bf53334)
+![Screenshot_20230709_023426_Gonna](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/3d9d29b6-f223-45b9-9508-ec826f43a8ea)
 
-![3](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/c00d177a-4920-47a8-97d9-2545d69d4eab)
-
-![4](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/86e5ab08-7f3c-499b-a632-51274180c0c0)
+![Screenshot_20230709_023420_Gonna](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/33600d53-b649-4e06-a99e-7e06c16a3661)
