@@ -6,9 +6,12 @@ import { Navigator } from "./navigators/Navigator";
 import { store } from "./stores/store";
 
 export default function App() {
-  React.useEffect(async () => {
-    await NavigationBar.setBackgroundColorAsync("white");
-    await NavigationBar.setButtonStyleAsync("dark");
+  React.useEffect(() => {
+    const setUp = async () => {
+      await NavigationBar.setBackgroundColorAsync("white");
+      await NavigationBar.setButtonStyleAsync("dark");
+    };
+    setUp();
   }, []);
 
   return (

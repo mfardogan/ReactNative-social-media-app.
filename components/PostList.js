@@ -6,10 +6,6 @@ import { Post } from "./Post";
 export const PostList = () => {
   const posts = useSelector((state) => state.app.posts);
 
-  React.useEffect(() => {
-    console.log(posts);
-  });
-
   return (
     <FlatList
       style={styles.container}

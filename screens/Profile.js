@@ -12,10 +12,12 @@ export const Profile = () => {
   const [follow, setFollow] = React.useState(false);
   const { content } = route.params;
 
-  React.useEffect(
-    () => navigation.setOptions(options(content.nick, content.avatar)),
-    []
-  );
+  React.useEffect(() => {
+    const setUp = async () => {
+      return navigation.setOptions(options(content.nick, content.avatar));
+    };
+    setUp();
+  }, []);
 
   const options = (userName, avatar) => {
     return {

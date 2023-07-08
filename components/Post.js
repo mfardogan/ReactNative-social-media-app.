@@ -17,10 +17,6 @@ export const Post = ({ content }) => {
   const navigator = useNavigation();
   const profiles = useSelector((state) => state.app.profiles);
 
-  React.useEffect(() => {
-    console.log(profiles);
-  });
-
   return (
     <View style={styles.container}>
       <View style={styles.segment}>

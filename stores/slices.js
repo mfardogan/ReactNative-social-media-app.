@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const slice = createSlice({
   name: "app",
   initialState: {
-    stories: Array(50)
+    stories: Array(10)
       .fill(null)
       .map((v) => ({
         id: faker.string.uuid(),
@@ -13,7 +13,7 @@ const slice = createSlice({
         seen: faker.datatype.boolean(),
       })),
 
-    posts: Array(500)
+    posts: Array(20)
       .fill(null)
       .map((v, _) => ({
         id: faker.string.uuid(),
@@ -27,7 +27,7 @@ const slice = createSlice({
         commentCount: faker.number.int() % 30,
       })),
 
-    profiles: Array(50)
+    profiles: Array(10)
       .fill(null)
       .map((v, index) => ({
         id: index,
@@ -40,7 +40,7 @@ const slice = createSlice({
         followers: faker.number.int() % 1000,
         follewed: faker.number.int() % 1000,
         posts: faker.number.int() % 100,
-        images: Array(50)
+        images: Array(10)
           .fill(null)
           .map((v, _) => ({
             id: faker.string.uuid(),
