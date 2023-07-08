@@ -1,6 +1,6 @@
 import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import {
   Image,
@@ -10,11 +10,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Fakes } from "../stores/Fakes";
+import { useSelector } from "react-redux";
 
 export const Post = ({ content }) => {
   const [liked, setLiked] = useState(false);
   const navigator = useNavigation();
+  const profiles = useSelector((state) => state.app.profiles);
+
+  React.useEffect(() => {
+    console.log(profiles);
+  });
 
   return (
     <View style={styles.container}>
@@ -22,10 +27,8 @@ export const Post = ({ content }) => {
         <TouchableOpacity
           style={styles.segment}
           onPress={() => {
-            const id = Math.floor(Math.random() * 10);
-            const profile = Fakes.profiles[id];
-
-            navigator.navigate("profile", { content: profile });
+            const at = Math.floor(Math.random() * profiles.length);
+            navigator.navigate("profile", { content: profiles[at] });
           }}
         >
           <Image style={styles.avatar} source={{ uri: content.avatar }} />

@@ -1,13 +1,16 @@
+import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { Fakes } from "../stores/Fakes";
+import { useSelector } from "react-redux";
 import { Story } from "./Story";
 
 export const StoryList = () => {
+  const stories = useSelector((state) => state.app.stories);
+
   return (
     <View style={styles.container}>
       <FlatList
         horizontal
-        data={Fakes.stories}
+        data={stories}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Story content={item} />}
       />
