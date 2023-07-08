@@ -54,6 +54,8 @@ const slice = createSlice({
           .fill(null)
           .map((v, _) => ({
             id: faker.string.uuid(),
+            likes: faker.number.int() % 100,
+            comments: faker.number.int() % 50,
             image: faker.image.urlPicsumPhotos(),
           })),
       })),

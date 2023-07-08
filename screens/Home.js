@@ -9,7 +9,7 @@ import { Colours } from "../constants/Colours";
 export const Home = () => {
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <StoryList />
       <PostList />
 
