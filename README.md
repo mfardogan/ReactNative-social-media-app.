@@ -1,7 +1,7 @@
 # ReactNative-social-media-app.
 Social media app with React, React Native &amp; Redux 
 
-![1](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/5d4d1737-d067-4a9a-973c-64adcf9b3019)
+![Screenshot_20230708_104251_Expo Go](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/6cc6f59b-0c2e-45ab-8fef-7d5eaaadb5b7)
 
 ![2](https://github.com/mfardogan/ReactNative-social-media-app./assets/23241672/663e7b04-ced2-424d-ae3a-37474bf53334)
 
