@@ -55,48 +55,60 @@ export const Post = ({ content }) => {
           style={styles.bg}
           imageStyle={styles.bgImage}
           source={{ uri: content.image }}
-        />
-      </View>
-
-      <View style={styles.segment}>
-        <View
-          style={{
-            flexDirection: "row",
-            marginLeft: 10,
-            alignItems: "center",
-          }}
         >
-          <TouchableOpacity onPress={() => setLiked((prev) => !prev)}>
-            <Ionicons
-              name={liked ? "ios-heart" : "ios-heart-outline"}
-              size={30}
-              color={liked ? "red" : Colours.links}
-            />
-          </TouchableOpacity>
+          <View
+            style={{
+              width: "100%",
+              height: "10%",
+              position: "absolute",
+              borderBottomLeftRadius: 5,
+              borderBottomRightRadius: 5,
+              bottom: 0,
+              flexDirection: "row",
+              alignItems: "center",
+              backgroundColor: "rgba(77, 56, 145, 0.5)",
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                marginLeft: 10,
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity onPress={() => setLiked((prev) => !prev)}>
+                <Ionicons
+                  name={liked ? "ios-heart" : "ios-heart-outline"}
+                  size={30}
+                  color={liked ? "red" : "black"}
+                />
+              </TouchableOpacity>
 
-          <Text style={{ marginLeft: 5, color: "gray" }}>
-            <Text style={{ fontWeight: "bold", color: Colours.links }}>
-              {content.likeCount}
-            </Text>{" "}
-            likes.
-          </Text>
-        </View>
+              <Text style={{ marginLeft: 5, color: "gray" }}>
+                <Text style={{ fontWeight: "bold", color: "black" }}>
+                  {content.likeCount}
+                </Text>{" "}
+                likes.
+              </Text>
+            </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            marginLeft: 10,
-            alignItems: "center",
-          }}
-        >
-          <Feather name="message-circle" size={30} color={Colours.links} />
-          <Text style={{ marginLeft: 5, color: "gray" }}>
-            <Text style={{ fontWeight: "bold", color: Colours.links }}>
-              {content.commentCount}
-            </Text>{" "}
-            comments.
-          </Text>
-        </View>
+            <View
+              style={{
+                flexDirection: "row",
+                marginLeft: 10,
+                alignItems: "center",
+              }}
+            >
+              <Feather name="message-circle" size={30} color={"black"} />
+              <Text style={{ marginLeft: 5, color: "gray" }}>
+                <Text style={{ fontWeight: "bold", color: "black" }}>
+                  {content.commentCount}
+                </Text>{" "}
+                comments.
+              </Text>
+            </View>
+          </View>
+        </ImageBackground>
       </View>
     </View>
   );
